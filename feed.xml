@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <description></description>
+    <link>alcir.github.io/</link>
+    <atom:link href="alcir.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 30 Mar 2015 16:58:02 +0200</pubDate>
+    <lastBuildDate>Mon, 30 Mar 2015 16:58:02 +0200</lastBuildDate>
+    <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>SmartOS zone: check_mk agent installation</title>
+        <description>&lt;p&gt;SmartOS zone: check_mk agent installation&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-console&quot; data-lang=&quot;console&quot;&gt;&lt;span class=&quot;go&quot;&gt;wget https://raw.githubusercontent.com/alcir/check_mk/master/agents/check_mk_agent.smartos-zone -O  /opt/local/bin/check_mk_agent --no-check-certificate&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;chmod +x /opt/local/bin/check_mk_agent&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;echo &amp;quot;check_mk        6556/tcp&amp;quot; &amp;gt;&amp;gt; /etc/services&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;echo &amp;quot;check_mk stream tcp nowait root /usr/sbin/tcpd /opt/local/bin/check_mk_agent&amp;quot; &amp;gt;&amp;gt; /etc/inet/inetd.conf&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;echo &amp;quot;check_mk_agent:10.96.11.234&amp;quot; &amp;gt;&amp;gt; /etc/hosts.allow&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;echo &amp;quot;check_mk_agent:ALL&amp;quot; &amp;gt;&amp;gt; /etc/hosts.deny&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;inetconv -o /var/svc/manifest/network/&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;inetconv -e&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;inetadm -m svc:/network/check_mk/tcp:default tcp_wrappers=TRUE&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;mkdir /opt/local/lib/check_mk_agent&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;mkdir /opt/local/etc/check_mk&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;mkdir /opt/local/lib/check_mk_agent/plugins&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;mkdir /opt/local/lib/check_mk_agent/local&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;wget https://raw.githubusercontent.com/alcir/check_mk/master/agents/local/check_solaris_smf.sh -O /opt/local/lib/check_mk_agent/local/check_solaris_smf.sh --no-check-certificate&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;wget https://raw.githubusercontent.com/alcir/check_mk/master/agents/plugins/mk_logwatch.smartos -O /opt/local/lib/check_mk_agent/plugins/mk_logwatch --no-check-certificate&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;wget https://raw.githubusercontent.com/alcir/check_mk/master/agents/plugins/mk_mysql -O /opt/local/lib/check_mk_agent/plugins/mk_mysql --no-check-certificate&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;chmod +x /opt/local/lib/check_mk_agent/plugins/*&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;chmod +x /opt/local/lib/check_mk_agent/local/*&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;echo &amp;quot;/var/mysql/ib*&amp;quot; &amp;gt; /opt/local/etc/check_mk/fileinfo.cfg&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;echo &amp;quot;/var/log/mysql/error.log&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt; W Can&amp;#39;t create/write to file&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt; C [ERROR] Can&amp;#39;t start server&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt; C mysqld_safe mysqld from pid file /var/run/mysql/mysqld.pid ended&amp;quot; &amp;gt;&amp;gt; /opt/local/etc/check_mk/logwatch.cfg&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;echo &amp;quot;[client]&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;password=xxxxxxxxxxxxxxx&amp;quot; &amp;gt;&amp;gt; /opt/local/etc/check_mk/mysql.cfg&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Thu, 26 Mar 2015 00:00:00 +0100</pubDate>
+        <link>alcir.github.io/posts/SmartOS_zone_check_mk.html</link>
+        <guid isPermaLink="true">alcir.github.io/posts/SmartOS_zone_check_mk.html</guid>
+        
+        <category>smartos</category>
+        
+        <category>check_mk</category>
+        
+        
+        <category>smartos</category>
+        
+        <category>check_mk</category>
+        
+      </item>
+    
+      <item>
+        <title>Solaris 10: check_mk agent installation</title>
+        <description>&lt;p&gt;Solaris 10: check_mk agent installation&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-console&quot; data-lang=&quot;console&quot;&gt;&lt;span class=&quot;go&quot;&gt;wget https://raw.githubusercontent.com/alcir/check_mk/master/agents/check_mk_agent.solaris -O /usr/bin/check_mk_agent --no-check-certificate&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;chmod +x /usr/bin/check_mk_agent&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;echo &amp;quot;check_mk        6556/tcp&amp;quot; &amp;gt;&amp;gt; /etc/services&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;echo &amp;quot;check_mk stream tcp nowait root /opt/csw/libexec/tcpd /usr/bin/check_mk_agent&amp;quot; &amp;gt;&amp;gt; /etc/inet/inetd.conf&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;echo &amp;quot;check_mk_agent:10.96.11.234&amp;quot; &amp;gt;&amp;gt; /etc/hosts.allow&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;echo &amp;quot;check_mk_agent:ALL&amp;quot; &amp;gt;&amp;gt; /etc/hosts.deny&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;inetconv&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;inetconv -e&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;mkdir /lib/check_mk_agent&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;mkdir /etc/check_mk&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;mkdir /lib/check_mk_agent/plugins&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;mkdir /lib/check_mk_agent/local&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;wget https://raw.githubusercontent.com/biodec/check_aacraid/master/check_aacraid -O /lib/check_mk_agent/local/check_aacraid --no-check-certificate&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;wget https://raw.githubusercontent.com/alcir/check_mk/master/agents/local/check_solaris_smf.sh -O /lib/check_mk_agent/local/check_solaris_smf.sh --no-check-certificate&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;wget https://raw.githubusercontent.com/alcir/nagios/master/check_mk/solaris_zones/agent/check_zones -O /lib/check_mk_agent/plugins/check_zones --no-check-certificate&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;wget https://raw.githubusercontent.com/alcir/check_mk/master/agents/plugins/mk_logwatch.smartos -O /lib/check_mk_agent/plugins/mk_logwatch --no-check-certificate&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;wget https://raw.githubusercontent.com/alcir/check_mk/master/agents/plugins/mk_mysql -O /lib/check_mk_agent/plugins/mk_mysql --no-check-certificate&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;echo &amp;quot;/appo/mysqldata/pacs2.err&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt; W Can&amp;#39;t create/write to file&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt; C [ERROR] Can&amp;#39;t start server&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt; C mysqld_safe mysqld from pid file&amp;quot; &amp;gt;&amp;gt; /etc/check_mk/logwatch.cfg&lt;/span&gt;
+
+&lt;span class=&quot;go&quot;&gt;chmod +x /lib/check_mk_agent/plugins/*&lt;/span&gt;
+&lt;span class=&quot;go&quot;&gt;chmod +x /lib/check_mk_agent/local/*&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Tue, 24 Mar 2015 00:00:00 +0100</pubDate>
+        <link>alcir.github.io/posts/Solaris_check_mk.html</link>
+        <guid isPermaLink="true">alcir.github.io/posts/Solaris_check_mk.html</guid>
+        
+        <category>solaris</category>
+        
+        <category>check_mk</category>
+        
+        
+        <category>solaris</category>
+        
+        <category>check_mk</category>
+        
+      </item>
+    
+  </channel>
+</rss>

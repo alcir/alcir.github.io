@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>  
+    <title>Test syntax</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" media="screen, projection" />
+    <link href="/css/autumn.css" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
+    <meta name="author" content="Alessio Ciregia">
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  </head>
+  <body>
+    <div id="content">
+      <div id="banner">
+        <div id="bannertitle"><a href="/">alcir</a></div>
+        <div id="bannerlinks">
+          <a href="/about.html">about me</a> &middot; 
+          <a href="/feed.xml">rss</a> &middot; 
+          <a href="http://github.com/alcir">github</a>
+        </div>
+      </div>
+      <div id="post">
+        <h1>Test syntax</h1>
+        <div id="postinfo">
+          <div id="postdate">
+            Apr 19, 2012
+          </div>
+          <div id="posttags">
+            tags: <a href="/tags/these.html">these</a>, <a href="/tags/are.html">are</a>, <a href="/tags/just.html">just</a>, <a href="/tags/made.html">made</a>, <a href="/tags/up.html">up</a>, <a href="/tags/tags.html">tags</a>, <a href="/tags/that.html">that</a>, <a href="/tags/do.html">do</a>, <a href="/tags/not.html">not</a>, <a href="/tags/exist.html">exist</a>, <a href="/tags/do.html">do</a>, <a href="/tags/not.html">not</a>, <a href="/tags/duplicate.html">duplicate</a>
+          </div>
+        </div>
+        <div id="postbody">
+          <p>This tests <strong>lots</strong> of <em>different</em> layout items.  Let’s start with
+<a href="http://www.netbsd.org/">a link</a> I have clicked on, and <a href="http://www.blahblahblahojnk234.neti/">another
+one</a> which I haven’t, and then continue
+with a really long paragraph to test how readable prose is, because often I
+find that my posts aren’t very readable when you have lots of text in a
+paragraph, quite like this one really, however it seems better if you keep
+paragraphs shorter, but I don’t really want to do that as it ends up looking
+like BBC News with a paragraph per sentence which I just find a bit annoying
+really.  Preferably I want this to read like a book, optimising for content and
+all that.  I also want to ensure that <code>code which is embedded in a paragraph
+has the correct font settings</code> and isn’t a wildly different size to the rest of
+the text.</p>
+
+<p><em>Note to add more stuff!</em></p>
+
+<p>Anyway, enough of that.  Here’s an unordered list!</p>
+
+<ul>
+  <li>One.  Two three four</li>
+  <li>Five six seven with lots of extra text to make this wrap around so that we
+can test the layout of multiple lines.</li>
+  <li>Eight.</li>
+</ul>
+
+<p>And here is an ordered list!</p>
+
+<ol>
+  <li>One</li>
+  <li>Two</li>
+  <li>Four.  Not really!  Only joking</li>
+  <li>Four.  Really, this time.</li>
+</ol>
+
+<p>Ok, <em>enough</em> of that.  Let’s try some more stuff, but not without <code>a
+whole lot of code in between</code> a bunch of text to see if the font size of
+embedded code sections is ok.</p>
+
+<h1 id="big-heading-of-the-h1-variety">Big heading of the h1 variety.</h1>
+
+<p>I shouldn’t really use these, as they are reserved for the title, but here’s what one looks like.</p>
+
+<h2 id="main-heading-h2-i-should-use-these-a-lot">Main heading, h2, I should use these a lot</h2>
+
+<p>Does exactly what it says in the heading.</p>
+
+<h3 id="a-smaller-h3-i-may-use-these-from-time-to-time">A smaller h3, I may use these from time to time</h3>
+
+<p>But then again I may not!  I can be tricky like that.</p>
+
+<h4 id="a-h4-like-im-ever-going-to-use-this">A h4, like I’m ever going to use this!</h4>
+
+<p>I don’t think I do, but maybe I’m wrong.  Now is probably a good time to add
+another really long paragraph to check word wrapping and alignment and
+justification and all that business, and to see if the headers stand out ok and
+clearly break up the text.  Blah blah blah, I’m running out of things to write
+now, so I’m just going to say some more blah blah blah and hope that nobody
+will ever read this.  Why would anyone read this?  It’s a boring syntax page on
+my website which isn’t linked from anywhere!  But, you never know, in this
+crazy google-searching generation.</p>
+
+<h5 id="a-h5-you-dont-see-this-every-day">A h5, you don’t see this every day</h5>
+
+<p>I don’t think my css even handles these.</p>
+
+<h6 id="a-h6">A h6</h6>
+
+<p>It definitely doesn’t handle these.</p>
+
+<h2 id="tables">Tables</h2>
+
+<p>This is a table:</p>
+
+<div class="posttable">
+ <table>
+  <thead>
+   <tr><th>Blah</th><th>Some more blah</th></tr>
+  </thead>
+  <tbody>
+   <tr><td>Add some <code>code</code> and then add some more text.</td><td>This is blah blah blah</td></tr>
+   <tr><td>One two three, hopefully this will overflow.  But how about if we overflow with <code>/a/really/long/pathname/which/probably/breaks/really/bad/operating/systems/anyway/but/we/do/not/care/as/we/just/want/to/test/word/wrapping/hey/how/about/that/</code></td><td>More blah</td></tr>
+  </tbody>
+ </table>
+</div>
+
+<p>Ok, let’s test some <code>code</code> examples:</p>
+
+<h2 id="python">Python</h2>
+
+<p>This is some Python code:</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/python</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">hexlist</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">domain</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">):</span>
+        <span class="n">hexlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%02x</span><span class="s">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">part</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">part</span><span class="p">:</span>
+            <span class="n">hexlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&quot;hex&quot;</span><span class="p">))</span>
+    <span class="n">hexlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;00&quot;</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([(</span><span class="s">&quot;.</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span> \
+               <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">hexlist</span><span class="p">)])</span></code></pre></div>
+
+<h2 id="c">C</h2>
+
+<p>Some C!</p>
+
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="cm">/*</span>
+<span class="cm"> * Comment</span>
+<span class="cm"> */</span>
+
+<span class="cp">#define MACRO foo</span>
+
+<span class="kt">int</span>
+<span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello, world!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<h2 id="shell">Shell</h2>
+
+<p>This is some <code>/bin/sh</code> stuff…</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/bin/sh</span>
+<span class="nv">foo</span><span class="o">=</span>bar
+<span class="k">for</span> i in <span class="nv">$foo</span>
+<span class="k">do</span>
+  <span class="nb">echo</span> <span class="k">${</span><span class="nv">i</span><span class="k">}</span>
+  <span class="nb">printf</span> <span class="s2">&quot;hello, there!\n&quot;</span>
+<span class="k">done</span></code></pre></div>
+
+<h2 id="xml">XML</h2>
+
+<p>Ugh, xml.</p>
+
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#39;1.0&#39;?&gt;</span>
+<span class="cp">&lt;!DOCTYPE service_bundle SYSTEM &#39;/usr/share/lib/xml/dtd/service_bundle.dtd.1&#39;&gt;</span>
+<span class="nt">&lt;service_bundle</span> <span class="na">type=</span><span class="s">&#39;profile&#39;</span> <span class="na">name=</span><span class="s">&#39;extract&#39;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;service</span> <span class="na">name=</span><span class="s">&#39;network/inetd&#39;</span> <span class="na">type=</span><span class="s">&#39;service&#39;</span> <span class="na">version=</span><span class="s">&#39;0&#39;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;instance</span> <span class="na">name=</span><span class="s">&#39;default&#39;</span> <span class="na">enabled=</span><span class="s">&#39;false&#39;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/service&gt;</span>
+<span class="nt">&lt;/service_bundle&gt;</span></code></pre></div>
+
+
+        </div>
+        <div id="postshare">
+          Share this post on
+          <a href='http://twitter.com/share?url=http://alcir.github.io/syntax.html&amp;text=%22Test+syntax%22+by+%40jperkin'>Twitter</a>,
+          <a href='http://news.ycombinator.com/submitlink?u=http://alcir.github.io/syntax.html&amp;t=Test+syntax'>HackerNews</a>,
+          <a href='http://www.facebook.com/sharer/sharer.php?u=http://alcir.github.io/syntax.html&amp;t=Test+syntax'>Facebook</a> or 
+          <a href='https://plus.google.com/share?url=http://alcir.github.io/syntax.html'>Google+</a>
+        </div>
+        <hr />
+      </div>
+
+<!--      <div id="allposts">
+        <h1>All Posts</h1>
+        <ul class="posts">
+          <li><span>26 Mar 2015</span> &raquo; <a href="/posts/SmartOS_zone_check_mk.html">SmartOS zone: check_mk agent installation</a></li>
+          <li><span>24 Mar 2015</span> &raquo; <a href="/posts/Solaris_check_mk.html">Solaris 10: check_mk agent installation</a></li>
+        </ul>
+      </div>
+-->
+    </div>
+  </body>
+</html>

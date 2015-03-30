@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>  
+    <title>Solaris 10: check_mk agent installation</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" media="screen, projection" />
+    <link href="/css/autumn.css" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
+    <meta name="author" content="Alessio Ciregia">
+    <meta charset="utf-8">
+    <meta property="og:title" content="Solaris 10: check_mk agent installation" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://alcir.github.io/posts/Solaris_check_mk.html" />
+    <meta property="og:image" content="http://alcir.github.io/files/images/avatar.png" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  </head>
+  <body>
+    <div id="content">
+      <div id="banner">
+        <div id="bannertitle"><a href="/">alcir</a></div>
+        <div id="bannerlinks">
+          <a href="/about.html">about me</a> &middot; 
+          <a href="/feed.xml">rss</a> &middot; 
+          <a href="http://github.com/alcir">github</a>
+        </div>
+      </div>
+      <div id="post">
+        <h1>Solaris 10: check_mk agent installation</h1>
+        <div id="postinfo">
+          <div id="postdate">
+            Mar 24, 2015
+          </div>
+          <div id="posttags">
+            tags: <a href="/tags/solaris.html">solaris</a>, <a href="/tags/check_mk.html">check_mk</a>
+          </div>
+        </div>
+        <div id="postbody">
+          <p>Solaris 10: check_mk agent installation</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">wget https://raw.githubusercontent.com/alcir/check_mk/master/agents/check_mk_agent.solaris -O /usr/bin/check_mk_agent --no-check-certificate</span>
+
+<span class="go">chmod +x /usr/bin/check_mk_agent</span>
+
+<span class="go">echo &quot;check_mk        6556/tcp&quot; &gt;&gt; /etc/services</span>
+<span class="go">echo &quot;check_mk stream tcp nowait root /opt/csw/libexec/tcpd /usr/bin/check_mk_agent&quot; &gt;&gt; /etc/inet/inetd.conf</span>
+<span class="go">echo &quot;check_mk_agent:10.96.11.234&quot; &gt;&gt; /etc/hosts.allow</span>
+<span class="go">echo &quot;check_mk_agent:ALL&quot; &gt;&gt; /etc/hosts.deny</span>
+
+<span class="go">inetconv</span>
+<span class="go">inetconv -e</span>
+
+<span class="go">mkdir /lib/check_mk_agent</span>
+<span class="go">mkdir /etc/check_mk</span>
+<span class="go">mkdir /lib/check_mk_agent/plugins</span>
+<span class="go">mkdir /lib/check_mk_agent/local</span>
+
+<span class="go">wget https://raw.githubusercontent.com/biodec/check_aacraid/master/check_aacraid -O /lib/check_mk_agent/local/check_aacraid --no-check-certificate</span>
+
+<span class="go">wget https://raw.githubusercontent.com/alcir/check_mk/master/agents/local/check_solaris_smf.sh -O /lib/check_mk_agent/local/check_solaris_smf.sh --no-check-certificate</span>
+
+<span class="go">wget https://raw.githubusercontent.com/alcir/nagios/master/check_mk/solaris_zones/agent/check_zones -O /lib/check_mk_agent/plugins/check_zones --no-check-certificate</span>
+
+<span class="go">wget https://raw.githubusercontent.com/alcir/check_mk/master/agents/plugins/mk_logwatch.smartos -O /lib/check_mk_agent/plugins/mk_logwatch --no-check-certificate</span>
+
+<span class="go">wget https://raw.githubusercontent.com/alcir/check_mk/master/agents/plugins/mk_mysql -O /lib/check_mk_agent/plugins/mk_mysql --no-check-certificate</span>
+
+<span class="go">echo &quot;/appo/mysqldata/pacs2.err</span>
+<span class="go"> W Can&#39;t create/write to file</span>
+<span class="go"> C [ERROR] Can&#39;t start server</span>
+<span class="go"> C mysqld_safe mysqld from pid file&quot; &gt;&gt; /etc/check_mk/logwatch.cfg</span>
+
+<span class="go">chmod +x /lib/check_mk_agent/plugins/*</span>
+<span class="go">chmod +x /lib/check_mk_agent/local/*</span></code></pre></div>
+
+
+        </div>
+        <div id="postshare">
+          Share this post on
+          <a href='http://twitter.com/share?url=http://alcir.github.io/posts/Solaris_check_mk.html&amp;text=%22Solaris+10%3A+check_mk+agent+installation%22+by+%40jperkin'>Twitter</a>,
+          <a href='http://news.ycombinator.com/submitlink?u=http://alcir.github.io/posts/Solaris_check_mk.html&amp;t=Solaris+10%3A+check_mk+agent+installation'>HackerNews</a>,
+          <a href='http://www.facebook.com/sharer/sharer.php?u=http://alcir.github.io/posts/Solaris_check_mk.html&amp;t=Solaris+10%3A+check_mk+agent+installation'>Facebook</a> or 
+          <a href='https://plus.google.com/share?url=http://alcir.github.io/posts/Solaris_check_mk.html'>Google+</a>
+        </div>
+        <hr />
+      </div>
+
+<!--      <div id="allposts">
+        <h1>All Posts</h1>
+        <ul class="posts">
+          <li><span>26 Mar 2015</span> &raquo; <a href="/posts/SmartOS_zone_check_mk.html">SmartOS zone: check_mk agent installation</a></li>
+          <li><span>24 Mar 2015</span> &raquo; <a href="/posts/Solaris_check_mk.html">Solaris 10: check_mk agent installation</a></li>
+        </ul>
+      </div>
+-->
+    </div>
+  </body>
+</html>

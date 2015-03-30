@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>  
+    <title>SmartOS zone: check_mk agent installation</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" media="screen, projection" />
+    <link href="/css/autumn.css" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
+    <meta name="author" content="Alessio Ciregia">
+    <meta charset="utf-8">
+    <meta property="og:title" content="SmartOS zone: check_mk agent installation" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://alcir.github.io/posts/SmartOS_zone_check_mk.html" />
+    <meta property="og:image" content="http://alcir.github.io/files/images/avatar.png" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  </head>
+  <body>
+    <div id="content">
+      <div id="banner">
+        <div id="bannertitle"><a href="/">alcir</a></div>
+        <div id="bannerlinks">
+          <a href="/about.html">about me</a> &middot; 
+          <a href="/feed.xml">rss</a> &middot; 
+          <a href="http://github.com/alcir">github</a>
+        </div>
+      </div>
+      <div id="post">
+        <h1>SmartOS zone: check_mk agent installation</h1>
+        <div id="postinfo">
+          <div id="postdate">
+            Mar 26, 2015
+          </div>
+          <div id="posttags">
+            tags: <a href="/tags/smartos.html">smartos</a>, <a href="/tags/check_mk.html">check_mk</a>
+          </div>
+        </div>
+        <div id="postbody">
+          <p>SmartOS zone: check_mk agent installation</p>
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="go">wget https://raw.githubusercontent.com/alcir/check_mk/master/agents/check_mk_agent.smartos-zone -O  /opt/local/bin/check_mk_agent --no-check-certificate</span>
+
+<span class="go">chmod +x /opt/local/bin/check_mk_agent</span>
+
+<span class="go">echo &quot;check_mk        6556/tcp&quot; &gt;&gt; /etc/services</span>
+<span class="go">echo &quot;check_mk stream tcp nowait root /usr/sbin/tcpd /opt/local/bin/check_mk_agent&quot; &gt;&gt; /etc/inet/inetd.conf</span>
+<span class="go">echo &quot;check_mk_agent:10.96.11.234&quot; &gt;&gt; /etc/hosts.allow</span>
+<span class="go">echo &quot;check_mk_agent:ALL&quot; &gt;&gt; /etc/hosts.deny</span>
+
+<span class="go">inetconv -o /var/svc/manifest/network/</span>
+<span class="go">inetconv -e</span>
+
+<span class="go">inetadm -m svc:/network/check_mk/tcp:default tcp_wrappers=TRUE</span>
+
+<span class="go">mkdir /opt/local/lib/check_mk_agent</span>
+<span class="go">mkdir /opt/local/etc/check_mk</span>
+<span class="go">mkdir /opt/local/lib/check_mk_agent/plugins</span>
+<span class="go">mkdir /opt/local/lib/check_mk_agent/local</span>
+
+<span class="go">wget https://raw.githubusercontent.com/alcir/check_mk/master/agents/local/check_solaris_smf.sh -O /opt/local/lib/check_mk_agent/local/check_solaris_smf.sh --no-check-certificate</span>
+
+<span class="go">wget https://raw.githubusercontent.com/alcir/check_mk/master/agents/plugins/mk_logwatch.smartos -O /opt/local/lib/check_mk_agent/plugins/mk_logwatch --no-check-certificate</span>
+
+<span class="go">wget https://raw.githubusercontent.com/alcir/check_mk/master/agents/plugins/mk_mysql -O /opt/local/lib/check_mk_agent/plugins/mk_mysql --no-check-certificate</span>
+
+<span class="go">chmod +x /opt/local/lib/check_mk_agent/plugins/*</span>
+<span class="go">chmod +x /opt/local/lib/check_mk_agent/local/*</span>
+
+<span class="go">echo &quot;/var/mysql/ib*&quot; &gt; /opt/local/etc/check_mk/fileinfo.cfg</span>
+<span class="go">echo &quot;/var/log/mysql/error.log</span>
+<span class="go"> W Can&#39;t create/write to file</span>
+<span class="go"> C [ERROR] Can&#39;t start server</span>
+<span class="go"> C mysqld_safe mysqld from pid file /var/run/mysql/mysqld.pid ended&quot; &gt;&gt; /opt/local/etc/check_mk/logwatch.cfg</span>
+
+<span class="go">echo &quot;[client]</span>
+<span class="go">password=xxxxxxxxxxxxxxx&quot; &gt;&gt; /opt/local/etc/check_mk/mysql.cfg</span></code></pre></div>
+
+
+        </div>
+        <div id="postshare">
+          Share this post on
+          <a href='http://twitter.com/share?url=http://alcir.github.io/posts/SmartOS_zone_check_mk.html&amp;text=%22SmartOS+zone%3A+check_mk+agent+installation%22+by+%40jperkin'>Twitter</a>,
+          <a href='http://news.ycombinator.com/submitlink?u=http://alcir.github.io/posts/SmartOS_zone_check_mk.html&amp;t=SmartOS+zone%3A+check_mk+agent+installation'>HackerNews</a>,
+          <a href='http://www.facebook.com/sharer/sharer.php?u=http://alcir.github.io/posts/SmartOS_zone_check_mk.html&amp;t=SmartOS+zone%3A+check_mk+agent+installation'>Facebook</a> or 
+          <a href='https://plus.google.com/share?url=http://alcir.github.io/posts/SmartOS_zone_check_mk.html'>Google+</a>
+        </div>
+        <hr />
+      </div>
+
+<!--      <div id="allposts">
+        <h1>All Posts</h1>
+        <ul class="posts">
+          <li><span>26 Mar 2015</span> &raquo; <a href="/posts/SmartOS_zone_check_mk.html">SmartOS zone: check_mk agent installation</a></li>
+          <li><span>24 Mar 2015</span> &raquo; <a href="/posts/Solaris_check_mk.html">Solaris 10: check_mk agent installation</a></li>
+        </ul>
+      </div>
+-->
+    </div>
+  </body>
+</html>

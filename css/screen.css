@@ -1,0 +1,310 @@
+/*
+ * The live copy of this file has comments removed, see the github version at
+ *
+ *   https://github.com/jperkin/www.perkin.org.uk/blob/master/css/screen.scss
+ *
+ * for more information.
+ */
+body {
+  background: #ffffff;
+  color: #111111;
+  font-family: Ubuntu, sans-serif;
+  font-weight: 400;
+}
+
+code {
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+em {
+  font-style: italic;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+strong {
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2em;
+}
+
+h1 {
+  border-bottom: 2px solid #e7e7e7;
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.6em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+h4 {
+  font-size: 1.4em;
+}
+
+h5 {
+  font-size: 1.3em;
+}
+
+h6 {
+  font-size: 1.2em;
+}
+
+hr {
+  margin: 0px 80px;
+}
+
+#content {
+  margin: 20px auto;
+  width: 760px;
+}
+
+#banner {
+  font-family: Ubuntu, sans-serif;
+  font-weight: 400;
+  padding-bottom: 20px;
+  text-align: right;
+}
+
+#bannertitle {
+  font-size: 24px;
+}
+
+#bannertitle a {
+  color: #000000;
+}
+
+#bannertitle a:hover {
+  text-decoration: none;
+}
+
+#bannerlinks {
+  font-size: 12px;
+}
+
+#bannerlinks a {
+  color: #444444;
+}
+
+/*
+ * #post* contain the actual content
+ */
+#post {
+  padding-bottom: 20px;
+}
+
+#postinfo {
+  color: #444444;
+  font-family: Ubuntu, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 0.2em 0;
+}
+
+#postinfo a {
+  color: #444444;
+}
+
+#postinfo a:visited {
+  color: #666666;
+}
+
+#postdate {
+  float: left;
+}
+
+#posttags {
+  text-align: right;
+}
+
+#postbody {
+  line-height: 1.6em;
+  margin: 1em;
+}
+
+#postbody a {
+  color: #4183c4;
+}
+
+#postbody a:visited {
+  color: #3173b4;
+}
+
+#postbody p {
+  margin: 1em 0;
+}
+
+#postbody p code {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 3px;
+}
+
+#postbody .postimg {
+  text-align: center;
+  margin: 1em 1em;
+}
+
+#postbody img {
+  max-width: 100%;
+  width: auto;
+}
+
+#postbody ol {
+  margin: 1em;
+}
+
+#postbody ul {
+  margin: 1em;
+}
+
+#postbody li {
+  margin: 0.2em 0;
+}
+
+.posttable {
+  margin: 1em 1em;
+}
+
+.posttable table {
+  color: #111111;
+  line-height: 1.5em;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.posttable th {
+  font-weight: 400;
+  text-align: center;
+}
+
+.posttable td {
+  background: #fafafa;
+  border: 1px solid #aaa;
+  padding: 5px;
+}
+
+table {
+  color: #111111;
+  line-height: 1.5em;
+  table-layout: fixed;
+  width: 100%;
+}
+
+th {
+  background: #fafafa;
+  border: 1px solid #aaa;
+  padding: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+td {
+  border: 1px solid #aaa;
+  padding: 5px;
+}
+
+tr:nth-child(even) {
+  background: #fafafa;
+}
+
+tr:nth-child(odd) {
+  background: #efefef;
+}
+
+#postshare {
+  color: #111111;
+  font-family: Ubuntu, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+#postshare a {
+  color: #111111;
+}
+
+/*
+ * Post lists
+ */
+#taggedposts {
+  padding: 0px 80px 20px;
+}
+
+#allposts {
+  background: #eeeeee;
+  border: 1px solid #dddddd;
+  padding: 0px 80px;
+}
+
+#allposts h1 {
+  text-align: center;
+}
+
+ul.posts {
+  line-height: 1.75em;
+  list-style-type: none;
+  padding: 5px;
+}
+
+ul.posts span {
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+ul.posts a {
+  color: #111111;
+}
+
+ul.posts a:visited {
+  color: #666666;
+}
+
+/*
+ * Syntax highlighting.  Actual colours are loaded from a separate file.
+ */
+.highlight {
+  border: 1px solid #aaaaaa;
+  overflow: auto;
+  line-height: 1.15em;
+  margin: 1em 1em;
+  width: auto;
+}
+
+/*
+ * Necessary to maintain a scrollbar on OSX.
+ */
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.highlight pre {
+  margin: 5px;
+  overflow: auto;
+  width: auto;
+}
